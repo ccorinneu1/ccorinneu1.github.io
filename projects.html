@@ -16,9 +16,155 @@
             overflow-x: hidden;
         }
 
+        .projects-title {
+            margin-left: 2rem;
+            margin-top: 2rem;
+            font-size: clamp(0.1rem, 3.4vw, 2rem);
+            font-weight: bold;
+            color: white;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+            margin: 4rem 0 0;
+            padding: 0 1rem;
+        }
+
+        .project-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            flex-grow: 1;
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .project-name {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            font-size: clamp(0.1rem, 2.5vw, 1.5rem);
+            padding: 0.5rem 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1C2E4A;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 70%;
+            max-height: 70%;
+            width: 600px;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+            color: white;
+        }
+
+        .popup-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .popup-section p {
+            font-size: 1rem;
+            color: #d3d3d3;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        body.popup-active {
+            overflow: hidden;
+        }
+
+        body.popup-active::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background-color: rgba(1, 249, 198, 0.2);
+            color: #01F9C6;
+            border-radius: 15px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         nav {
             background-color: #243B55;
-            padding: 1vw 2vw;
+            padding: clamp(0.1rem, 2vw, 0.5rem);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -40,7 +186,7 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            font-size: 2vw;
+            font-size: clamp(0.1rem, 2vw, 1.5rem);
             font-weight: bold;
             transition: color 0.3s ease;
         }
@@ -62,6 +208,146 @@
             <li><a href="awards.html">Awards</a></li>
         </ul>
     </nav>
+
+    <div class="projects-title"> Projects</div>
+
+    <div class="projects-container">
+        <div class="project-box" id="project1" onclick="showPopup('popup1')">
+            <img src="platedate.png" class="project-image">
+            <div class="project-name">PlateDate</div>
+        </div>
+        <div class="project-box" id="project2" onclick="showPopup('popup2')">
+            <img src="phylohmm.png" class="project-image">
+            <div class="project-name">Phylogenetic Hidden Markov Models</div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup1">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('popup1')">&times;</span>
+            <h1 class="popup-title">
+                <a href="http://4300showcase.infosci.cornell.edu:5191/" target="_blank">PlateDate</a>
+            </h1>
+            <div class="popup-section">
+                <h2>Project Overview</h2>
+                <p>PlateDate is a dynamic web platform designed to help users effortlessly discover recipes tailored to
+                    group preferences, making meal planning collaborative and enjoyable. The platform allows multiple
+                    users to input their dietary preferences, restrictions, and favorite ingredients or dishes,
+                    generating
+                    a personalized set of recipe recommendations that satisfy everyone in the group.
+
+                    The front-end features a responsive design built with JavaScript, HTML, and CSS, ensuring a
+                    seamless user experience. Advanced natural language processing (NLP) techniques were applied to
+                    analyze and retrieve over 500,000 recipes from a diverse database. Users can further refine results
+                    by sorting recipes based on preparation/cooking time as well as by user ratings, enhancing
+                    convenience and usability.</p>
+            </div>
+            <div class="popup-section">
+                <h2>Collaboration Details</h2>
+                <p>PlateDate was developed as part of a team of five, with each member contributing to different aspects
+                    of the project. As a leader, I took charge of planning meetings, setting clear objectives, and
+                    dividing tasks based on each team member's strengths and expertise, ensuring an efficient workflow
+                    and effective use of resources. My primary responsibilities included designing and implementing the
+                    front-end interface using JavaScript, HTML, and CSS, ensuring a responsive and user-friendly design.
+                    I also contributed to the back-end development, where I integrated features such as a query
+                    relevance pie chart, which visually represents how much each query corresponded to each result, and
+                    the ability to order recipes by preparation time, cooking time, and ratings. These features enhanced
+                    hte platform's usability and personalization. Collaboration was facilitated through GitHub for
+                    version control. We held regular sprints to ensure consistent progress and efficient integration of
+                    front-end and back-end components.</p>
+            </div>
+            <div class="popup-section">
+                <h3>Languages & Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill">Python</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">HTML/CSS</div>
+                    <div class="skill">Flask</div>
+                    <div class="skill">Natural Language Processing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popup2">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('popup2')">&times;</span>
+            <h1 class="popup-title">
+                <a href="https://github.com/cwmitz/phylo-hmm" target="_blank">Phylogenetic Hidden Markov Models</a>
+            </h1>
+            <div class="popup-section">
+                <h2>Project Overview</h2>
+                <p>Phylogenetic Hidden Markov Model is a computational biology project that leverages Hidden Markov
+                    Models (HMMs) and phylogenetic analysis to identify conserved DNA regions across different species.
+                    These conserved regions often indicate biologically significant sequences that have been preserved
+                    through evolution due to their critical functional roles.
+
+                    The project involved implementing dynamic programming algorithms to efficiently process genomic data
+                    and identify patterns of conservation. By integrating phylogenetic trees, the model accounted for
+                    the evolutionary relationships between species, enabling a more nuanced understanding of sequence
+                    conservation. This approach provided insights into how selective pressures shape genomes and
+                    revealed potential areas for further study in functional genomics.
+
+                    Advanced computational biology techniques, such as multiple sequence alignment and probabilistic
+                    modeling, were applied to handle the complexities of genomic data. The results demonstrated how the
+                    combination of HMMs and phylogenetic analysis can uncover evolutionary patterns that are not easily
+                    detectable with traditional methods.</p>
+            </div>
+            <div class="popup-section">
+                <h2>Collaboration Details</h2>
+                <p>The Phylogenetic Hidden Markov Model project was a collaborative effort involving a team of three,
+                    where each member contributed unique skills to achieve the project's goals. My primary
+                    responsibilities included implementing dynamic programming algorithms to efficiently identify
+                    conserved DNA regions and integrating phylogenetic trees into the analysis to account for
+                    evolutionary relationships between species. Additionally, I worked on refining the Hidden Markov
+                    Model parameters to improve the accuracy of the predictions.
+
+                    As a team, we divided tasks based on our areas of expertise. I collaborated closely with one
+                    teammate, who focused on preprocessing genomic datasets and building the phylogenetic trees, and
+                    another who worked on visualizing the results and summarizing biological insights. We used GitHub
+                    for version control, ensuring seamless integration of code, and held regular meetings to align on
+                    objectives and address challenges.
+
+                    This collaborative workflow allowed us to combine our strengths effectively, resulting in a robust
+                    model that demonstrated how computational methods could reveal significant evolutionary patterns.
+                </p>
+            </div>
+            <div class="popup-section">
+                <h3>Languages & Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill">Python</div>
+                    <div class="skill">NumPy</div>
+                    <div class="skill">SciPy</div>
+                    <div class="skill">MEGA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the popup
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'block';
+            document.body.classList.add('popup-active');
+        }
+
+        // Function to close the popup
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'none';
+            document.body.classList.remove('popup-active');
+        }
+
+        // Close popups when clicking outside
+        window.addEventListener('click', (event) => {
+            const openPopup = document.querySelector('.popup[style*="display: block"]');
+            if (openPopup && !openPopup.contains(event.target) && !event.target.closest('.project-box')) {
+                openPopup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
