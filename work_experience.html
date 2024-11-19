@@ -16,6 +16,152 @@
             overflow-x: hidden;
         }
 
+        .projects-title {
+            margin-left: 2rem;
+            margin-top: 2rem;
+            font-size: clamp(0.1rem, 3.4vw, 2rem);
+            font-weight: bold;
+            color: white;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+            margin: 4rem 0 0;
+            padding: 0 1rem;
+        }
+
+        .project-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            flex-grow: 1;
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .project-name {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            font-size: clamp(0.1rem, 2.5vw, 1.5rem);
+            padding: 0.5rem 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1C2E4A;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 70%;
+            max-height: 70%;
+            width: 600px;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+            color: white;
+        }
+
+        .popup-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .popup-section p {
+            font-size: 1rem;
+            color: #d3d3d3;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        body.popup-active {
+            overflow: hidden;
+        }
+
+        body.popup-active::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background-color: rgba(1, 249, 198, 0.2);
+            color: #01F9C6;
+            border-radius: 15px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         nav {
             background-color: #243B55;
             padding: clamp(0.1rem, 2vw, 0.5rem);
@@ -57,11 +203,151 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="work_experience.html">Work Experience</a></li>
-            <li><a href="education.html">Education</a></li>
             <li><a href="extracurriculars.html">Extracurriculars/Leadership</a></li>
             <li><a href="awards.html">Awards</a></li>
         </ul>
     </nav>
+
+    <div class="projects-title">Work Experience</div>
+
+    <div class="projects-container">
+        <div class="project-box" id="project1" onclick="showPopup('popup1')">
+            <img src="cot.png" class="project-image">
+            <div class="project-name">Business Analyst Intern</div>
+        </div>
+        <div class="project-box" id="project2" onclick="showPopup('popup2')">
+            <img src="sbb.png" class="project-image">
+            <div class="project-name">Early Business Analyst Intern</div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup1">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('popup1')">&times;</span>
+            <h1 class="popup-title">Business Analyst Intern</h1>
+            <div class="popup-section">
+                <h2>Project Overview</h2>
+                <p>During my second internship at Capital One, I focused on optimizing marketing strategies for Capital
+                    One Travel by developing a predictive model to determine the best timing for engaging customers.
+                    This project addressed a key challenge in the travel sector: understanding when customers are most
+                    likely to book travel, enabling the company to align marketing campaigns with customer behavior and
+                    maximize engagement.</p>
+
+                <p>The predictive model was built using SQL and Python, leveraging large-scale datasets that included
+                    customer booking histories, travel preferences, and seasonal trends. I implemented feature
+                    engineering techniques to extract relevant insights, such as identifying patterns in travel
+                    behaviors and correlating these with external factors like holidays or market conditions. The model
+                    incorporated advanced statistical methods to account for variability in customer behavior and
+                    predict the optimal points for marketing outreach. These predictions were designed to inform Capital
+                    One’s marketing campaigns, ensuring timely and personalized customer interactions.</p>
+
+                <p>To support the model, I analyzed the effectiveness of previous campaigns, identifying areas for
+                    improvement in timing and targeting. This included using Python for data visualization to highlight
+                    key trends and presenting actionable recommendations to senior leadership. The project not only
+                    enhanced customer engagement but also aligned with Capital One Travel’s broader revenue strategies
+                    by driving more conversions and improving customer satisfaction.</p>
+
+                <p>Looking ahead, this work provided a scalable framework for future marketing optimization efforts and
+                    demonstrated the potential of predictive analytics to refine customer outreach. The success of this
+                    project underscored the importance of data-driven decision-making in creating impactful marketing
+                    strategies.
+                </p>
+            </div>
+            <div class="popup-section">
+                <h2>Collaboration Details</h2>
+                <p>During my second internship at Capital One, I worked closely with two other interns on a project
+                    aimed at expanding marketing strategies for Capital One Travel to a new subset of customers. While I
+                    focused on developing a predictive model to determine the optimal timing for customer engagement, my
+                    teammates worked on complementary aspects: one analyzed the persona of the target customers to
+                    refine the audience segmentation, and the other explored the channels and content best suited for
+                    effective marketing outreach.</p>
+
+                <p>As a team, we regularly collaborated to align our individual contributions into a cohesive strategy.
+                    I shared insights from my predictive model to validate and enhance the personas and marketing
+                    channels identified by my teammates. Additionally, I assisted with SQL queries and data
+                    preprocessing to ensure consistency in the datasets used across all components of the project. I
+                    helped facilitate team meetings to discuss progress, integrate findings, and align our strategies to
+                    deliver maximum impact. Together, we prepared and presented a comprehensive strategy to senior
+                    leadership, demonstrating how the model, personas, and channel recommendations could synergize to
+                    enhance Capital One Travel’s marketing efficiency and customer engagement. This collaborative effort
+                    highlighted the value of integrating technical and strategic approaches to solve complex business
+                    challenges.
+                </p>
+            </div>
+            <div class="popup-section">
+                <h3>Languages & Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill">SQL</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">Snowflake</div>
+                    <div class="skill">DataBricks</div>
+                    <div class="skill">Machine Learning</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popup2">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('popup2')">&times;</span>
+            <h1 class="popup-title">Early Business Analyst Intern</h1>
+            <div class="popup-section">
+                <h2>Project Overview</h2>
+                <p>During my first internship at Capital One, I developed a loan exception-pricing model for the Small
+                    Business Banking division, leveraging advanced analytics to enhance pricing strategies. Using SQL
+                    and Python, I analyzed extensive datasets containing loan performance and customer behavior metrics,
+                    focusing on the 61% of loans that are exception-priced. This work enabled the creation of a tailored
+                    pricing framework designed to improve flexibility and competitiveness while maintaining
+                    profitability.</p>
+            </div>
+            <div class="popup-section">
+                <h2>Collaboration Details</h2>
+                <p>During my first internship at Capital One, I worked as part of a team of three interns, each focusing
+                    on distinct aspects of Small Business Banking analytics. While my primary responsibility was to
+                    develop a loan exception-pricing model, my teammates worked on customer relationship valuation via
+                    pledged deposits.
+
+                    As the team leader, I played a key role in organizing workflows and ensuring the overall success of
+                    our projects. I helped coordinate team meetings, set clear objectives, and facilitated collaboration
+                    to keep us aligned with business goals. In addition to managing tasks, I supported my teammates with
+                    the technical aspects of their work, including assisting with SQL queries and providing guidance on
+                    data cleaning and analysis in Python. </p>
+            </div>
+            <div class="popup-section">
+                <h3>Languages & Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill">SQL</div>
+                    <div class="skill">Snowflake</div>
+                    <div class="skill">Python</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the popup
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'block';
+            document.body.classList.add('popup-active');
+        }
+
+        // Function to close the popup
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'none';
+            document.body.classList.remove('popup-active');
+        }
+
+        // Close popups when clicking outside
+        window.addEventListener('click', (event) => {
+            const openPopup = document.querySelector('.popup[style*="display: block"]');
+            if (openPopup && !openPopup.contains(event.target) && !event.target.closest('.project-box')) {
+                openPopup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
