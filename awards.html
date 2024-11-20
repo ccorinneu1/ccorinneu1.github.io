@@ -24,6 +24,125 @@
             color: white;
         }
 
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .timeline-event {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding: 1rem 2rem;
+            background: #243B55;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-event:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-date {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #01F9C6;
+            margin-right: 1.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            color: white;
+            margin: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #01F9C6;
+            transform: translateX(-50%);
+        }
+
+        /* Removed dots by deleting .timeline-event::before */
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1C2E4A;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 70%;
+            max-height: 70%;
+            width: 600px;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+            color: white;
+        }
+
+        .popup-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .popup-section p {
+            font-size: 1rem;
+            color: #d3d3d3;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        body.popup-active {
+            overflow: hidden;
+        }
+
+        body.popup-active::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
         nav {
             background-color: #243B55;
             padding: clamp(0.1rem, 2vw, 0.5rem);
@@ -71,6 +190,213 @@
     </nav>
 
     <div class="projects-title">Awards</div>
+
+    <div class="timeline">
+        <div class="timeline-event" onclick="showPopup('award1')">
+            <div class="timeline-date">August 2024</div>
+            <div class="timeline-content">
+                <h3>Shining Star Award</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('hsf1')">
+            <div class="timeline-date">June 2024</div>
+            <div class="timeline-content">
+                <h3>Hispanic Scholarship Fund (HSF) Scholar</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award2')">
+            <div class="timeline-date">May 2024</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award3')">
+            <div class="timeline-date">December 2023</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award8')">
+            <div class="timeline-date">July 2023</div>
+            <div class="timeline-content">
+                <h3>Mary Miller Lyons Scholarship</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('hsf2')">
+            <div class="timeline-date">June 2023</div>
+            <div class="timeline-content">
+                <h3>Hispanic Scholarship Fund (HSF) Scholar</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award4')">
+            <div class="timeline-date">May 2023</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award5')">
+            <div class="timeline-date">December 2022</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('hsf3')">
+            <div class="timeline-date">June 2022</div>
+            <div class="timeline-content">
+                <h3>Hispanic Scholarship Fund (HSF) Scholar</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award6')">
+            <div class="timeline-date">May 2022</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('award7')">
+            <div class="timeline-date">December 2021</div>
+            <div class="timeline-content">
+                <h3>Dean's List</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('hsf4')">
+            <div class="timeline-date">June 2021</div>
+            <div class="timeline-content">
+                <h3>Hispanic Scholarship Fund (HSF) Scholar</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="award1">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award1')">&times;</span>
+            <h1 class="popup-title">Shining Star Award</h1>
+            <p>This award was presented to just 3 out of 286 interns during the Summer 2024 Capital One Business Analyst
+                Internship, recognizing outstanding performance and excellence throughout the program.
+            </p>
+        </div>
+    </div>
+    <div class="popup" id="award2">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award2')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award3">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award3')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award4">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award4')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award5">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award5')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award6">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award6')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award7">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award7')">&times;</span>
+            <h1 class="popup-title">Dean's List</h1>
+            <p>This award was given to students in the College of Engineering who had a GPA of 3.5 or higher in the
+                previous semester.</p>
+        </div>
+    </div>
+    <div class="popup" id="award8">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('award8')">&times;</span>
+            <h1 class="popup-title">
+                <a href="https://alphaphifoundation.org/vital-programs/scholarships/meet-the-foundation-scholars-23-24/"
+                    target="_blank" rel="noopener noreferrer">Mary Miller Lyons Scholarship</a>
+            </h1>
+            <p>This award was given to one member of Alpha Phi nationally who excelled both in academics as well as
+                leadership and community involvement.</p>
+        </div>
+    </div>
+    <div class="popup" id="hsf1">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('hsf1')">&times;</span>
+            <h1 class="popup-title">Hispanic Scholarship Fund (HSF) Scholar</h1>
+            <p>This award is granted to 10,000 of the 120,000 applicants who demonstrate exceptional academic
+                achievement, as evidenced by a high GPA, and proudly identify as of Hispanic heritage.
+            </p>
+        </div>
+    </div>
+    <div class="popup" id="hsf2">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('hsf2')">&times;</span>
+            <h1 class="popup-title">Hispanic Scholarship Fund (HSF) Scholar</h1>
+            <p>This award is granted to 10,000 of the 120,000 applicants who demonstrate exceptional academic
+                achievement, as evidenced by a high GPA, and proudly identify as of Hispanic heritage.
+            </p>
+        </div>
+    </div>
+    <div class="popup" id="hsf3">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('hsf3')">&times;</span>
+            <h1 class="popup-title">Hispanic Scholarship Fund (HSF) Scholar</h1>
+            <p>This award is granted to 10,000 of the 120,000 applicants who demonstrate exceptional academic
+                achievement, as evidenced by a high GPA, and proudly identify as of Hispanic heritage.
+            </p>
+        </div>
+    </div>
+    <div class="popup" id="hsf4">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('hsf4')">&times;</span>
+            <h1 class="popup-title">Hispanic Scholarship Fund (HSF) Scholar</h1>
+            <p>This award is granted to 10,000 of the 120,000 applicants who demonstrate exceptional academic
+                achievement, as evidenced by a high GPA, and proudly identify as of Hispanic heritage.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'block';
+                document.body.classList.add('popup-active');
+            }
+        }
+
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        }
+
+        // Close the popup when clicking outside
+        window.addEventListener('click', (event) => {
+            const openPopup = document.querySelector('.popup[style*="display: block"]');
+            if (openPopup && !openPopup.contains(event.target) && !event.target.closest('.timeline-event')) {
+                openPopup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        });
+    </script>
 </body>
 
 </html>

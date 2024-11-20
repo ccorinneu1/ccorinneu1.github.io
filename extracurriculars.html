@@ -24,6 +24,125 @@
             color: white;
         }
 
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .timeline-event {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding: 1rem 2rem;
+            background: #243B55;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-event:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-date {
+            font-size: clamp(0.1rem, 2vw, 1.5rem);
+            font-weight: bold;
+            color: #01F9C6;
+            margin-right: 1.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: clamp(0.1rem, 2vw, 1.5rem);
+            color: white;
+            margin: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #01F9C6;
+            transform: translateX(-50%);
+        }
+
+        /* Removed dots by deleting .timeline-event::before */
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1C2E4A;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 70%;
+            max-height: 70%;
+            width: 600px;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+            color: white;
+        }
+
+        .popup-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .popup-section p {
+            font-size: 1rem;
+            color: #d3d3d3;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        body.popup-active {
+            overflow: hidden;
+        }
+
+        body.popup-active::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
         nav {
             background-color: #243B55;
             padding: clamp(0.1rem, 2vw, 0.5rem);
@@ -71,6 +190,172 @@
     </nav>
 
     <div class="projects-title">Extracurriculars/Leadership</div>
+
+    <div class="timeline">
+        <div class="timeline-event" onclick="showPopup('ta')">
+            <div class="timeline-date">August 2024 - December 2024</div>
+            <div class="timeline-content">
+                <h3>CS 4320 Teaching Assisstant</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('hyperloop')">
+            <div class="timeline-date">September 2022 - May 2023</div>
+            <div class="timeline-content">
+                <h3>Cornell Hyperloop Project Team UI Team Member</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('fund')">
+            <div class="timeline-date">August 2022 - May 2024</div>
+            <div class="timeline-content">
+                <h3>Society of Women Engineers (SWE) Fundraising Director</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('cuemp2')">
+            <div class="timeline-date">August 2022 - May 2024</div>
+            <div class="timeline-content">
+                <h3>CUEmpower Peer Mentor</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('eyes')">
+            <div class="timeline-date">August 2022 - May 2024</div>
+            <div class="timeline-content">
+                <h3>Encouraging Young Engineers and Scientists (EYES) Mentor</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('aphi')">
+            <div class="timeline-date">January 2022 - May 2024</div>
+            <div class="timeline-content">
+                <h3>Alpha Phi Sorority Member</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('guidingeyes')">
+            <div class="timeline-date">August 2021 - May 2024</div>
+            <div class="timeline-content">
+                <h3>Cornell Guiding Eyes Member</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('swe1')">
+            <div class="timeline-date">August 2021 - May 2022</div>
+            <div class="timeline-content">
+                <h3>Society of Women Engineers Fundraising Committee Member</h3>
+            </div>
+        </div>
+        <div class="timeline-event" onclick="showPopup('cuemp')">
+            <div class="timeline-date">August 2021 - May 2022</div>
+            <div class="timeline-content">
+                <h3>CUEmpower Mentee</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="ta">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('ta')">&times;</span>
+            <h1 class="popup-title">CS 4320 Teaching Assisstant</h1>
+            <p>Support students in mastering core database concepts, including data models, query languages, and
+                database design. Provide lab assistance, conduct office hours, and offer detailed feedback on
+                assignments to reinforce learning in relational and non-relational data storage systems.
+            </p>
+        </div>
+    </div>
+    <div class="popup" id="hyperloop">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('hyperloop')">&times;</span>
+            <h1 class="popup-title">Cornell Hyperloop Project Team UI Team Member</h1>
+            <p>Developed the front-end of a graphical user interface (GUI) in Python for real-time monitoring and
+                visualization of Hyperloop pod metrics. Utilized Arduino to gather and analyze pod metrics, integrating
+                data into the interface to support critical performance analysis and streamline data accessibility for
+                the team.</p>
+        </div>
+    </div>
+    <div class="popup" id="fund">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('fund')">&times;</span>
+            <h1 class="popup-title">Society of Women Engineers (SWE) Fundraising Director</h1>
+            <p>Lead a committee to plan and organize fundraising events, secure grants, and manage sponsorships to
+                support SWE initiatives. Oversee team efforts to increase funding for professional development and
+                outreach activities, driving the growth and success of SWE’s mission on campus.</p>
+        </div>
+    </div>
+    <div class="popup" id="cuemp2">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('cuemp2')">&times;</span>
+            <h1 class="popup-title">CUEmpower Peer Mentor</h1>
+            <p>Guide and support first-year minority engineering students, providing mentorship to help them navigate
+                the academic challenges and adapt to university life.</p>
+        </div>
+    </div>
+    <div class="popup" id="eyes">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('eyes')">&times;</span>
+            <h1 class="popup-title">Encouraging Young Engineers and Scientists (EYES) Mentor</h1>
+            <p>Participated in STEM outreach programs at local elementary schools to inspire interest in engineering and
+                science. Designed interactive workshops and hands-on activities, fostering curiosity and early
+                engagement in STEM fields among young students.</p>
+        </div>
+    </div>
+    <div class="popup" id="aphi">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('aphi')">&times;</span>
+            <h1 class="popup-title">Alpha Phi Sorority Member</h1>
+            <p>Active member of Alpha Phi, a values-based organization focused on fostering leadership, sisterhood, and
+                community involvement, while supporting philanthropic initiatives such as women’s heart health through
+                the Alpha Phi Foundation.</p>
+        </div>
+    </div>
+    <div class="popup" id="guidingeyes">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('guidingeyes')">&times;</span>
+            <h1 class="popup-title">Cornell Guiding Eyes Member</h1>
+            <p>Volunteered with Cornell Guiding Eyes, a program dedicated to raising and training guide dogs for
+                individuals with visual impairments, contributing to the dogs' socialization, obedience training, and
+                overall preparation for their future roles as service animals.</p>
+        </div>
+    </div>
+    <div class="popup" id="swe1">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('swe1')">&times;</span>
+            <h1 class="popup-title">Society of Women Engineers Fundraising (SWE) Committee Member</h1>
+            <p>Joined the Society of Women Engineers (SWE) Fundraising Committee to support initiatives that promote the
+                advancement of women in engineering through organizing and managing fundraising events, collaborating
+                with team members, and contributing to the success of SWE programs and scholarships.</p>
+        </div>
+    </div>
+    <div class="popup" id="cuemp">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('cuemp')">&times;</span>
+            <h1 class="popup-title">CUEmpower Mentee</h1>
+            <p>Participated in CUEmpower, a mentoring program designed to support minority freshmen in the College of
+                Engineering.</p>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'block';
+                document.body.classList.add('popup-active');
+            }
+        }
+
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        }
+
+        // Close the popup when clicking outside
+        window.addEventListener('click', (event) => {
+            const openPopup = document.querySelector('.popup[style*="display: block"]');
+            if (openPopup && !openPopup.contains(event.target) && !event.target.closest('.timeline-event')) {
+                openPopup.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            }
+        });
+    </script>
 </body>
 
 </html>
