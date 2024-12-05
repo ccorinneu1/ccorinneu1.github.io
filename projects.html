@@ -51,6 +51,16 @@
             border-top-right-radius: 10px;
         }
 
+        .phylo-graph {
+            max-width: 70%;
+            height: auto;
+            margin: 1rem 0;
+            border: 2px solid white;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .project-image {
             width: 100%;
             height: 100%;
@@ -74,6 +84,7 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+
 
         .popup {
             display: none;
@@ -122,10 +133,17 @@
 
         .popup-section p {
             font-size: 1rem;
-            color: #d3d3d3;
+            color: white;
             line-height: 1.5;
             text-align: left;
             margin-bottom: 1.5rem;
+        }
+
+        .popup-section a {
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: underline;
+            font-size: inherit;
         }
 
         body.popup-active {
@@ -224,9 +242,7 @@
     <div class="popup" id="popup1">
         <div class="popup-content">
             <span class="close" onclick="closePopup('popup1')">&times;</span>
-            <h1 class="popup-title">
-                <a href="http://4300showcase.infosci.cornell.edu:5191/" target="_blank">PlateDate</a>
-            </h1>
+            <h1 class="popup-title">PlateDate</h1>
             <div class="popup-section">
                 <h2>Project Overview</h2>
                 <p>PlateDate is a dynamic web platform designed to help users effortlessly discover recipes tailored to
@@ -239,6 +255,42 @@
                     analyze and retrieve over 500,000 recipes from a diverse database. Users can further refine results
                     by sorting recipes based on preparation/cooking time as well as by user ratings, enhancing
                     convenience and usability.</p>
+            </div>
+            <div class="popup-section">
+                <h2>Explore PlateDate</h2>
+                <a href="http://4300showcase.infosci.cornell.edu:5191/" class="popup-section a" target="_blank">Visit
+                    PlateDate</a> to
+                experience the platform and make meal planning a breeze.
+            </div>
+            <div class="popup-section">
+                <h2>How It Works and Outputs</h2>
+                <p>To get the best results on PlateDate, users input a combination of dietary
+                    restrictions/preferences (e.g. vegetarian, gluten-free) and the number of people (1-5). Each
+                    person can then specify their preference for food, whether it's a recipe, a cuisine, or an
+                    ingredient. The system processes these inputs to provide curated recipe recommendations that balance
+                    all preferences.</p>
+                <p>The output includes:</p>
+                <ul>
+                    <li>Sorting options to organize recipes by overall similarity to queries (default), rating, or
+                        cooking time.</li>
+                    <li>A ranked list of recipes tailored to the group's preferences.</li>
+                    <li>Links to each recipe on Food.com.</li>
+                    <li>Images of each recipe from Food.com.</li>
+                    <li>Query relevance pie charts showing how closely each recipe aligns with the
+                        input queries.</li>
+                    <li>Ratings out of 5 stars for each recipe.</li>
+                    <li>Preparation/cooking times for each recipe.</li>
+                </ul>
+
+                <p>For example, inputting 4 people with the requests "pasta," "meat," "cheese," "broccoli" gives recipes
+                    like "pasta al forno" with broccoli or "salmon pasta bake." Another input is 3 people with requests
+                    "chicken," "rice," "lemon," which gives recipes like "baked chicken, lemon and pea risotto" and
+                    "lemon chicken rice." Inputting these same requests with the vegetarian option checked changes
+                    the
+                    recipes outputted to be "garlicky rice" and "lemon rice with herbs." Note that although "chicken"
+                    may still
+                    appear in the query relevance pie chart due to recipe comments (e.g. "good with chicken"), all
+                    recipes are guaranteed to meet the vegetarian criteria.</p>
             </div>
             <div class="popup-section">
                 <h2>Collaboration Details</h2>
@@ -270,7 +322,7 @@
         <div class="popup-content">
             <span class="close" onclick="closePopup('popup2')">&times;</span>
             <h1 class="popup-title">
-                <a href="https://github.com/cwmitz/phylo-hmm" target="_blank">Phylogenetic Hidden Markov Models</a>
+                <a>Phylogenetic Hidden Markov Models</a>
             </h1>
             <div class="popup-section">
                 <h2>Project Overview</h2>
@@ -290,6 +342,57 @@
                     combination of HMMs and phylogenetic analysis can uncover evolutionary patterns that are not easily
                     detectable with traditional methods.</p>
             </div>
+            <div class="popup-section">
+                <h2>How to Run the Program</h2>
+                <p>To run the Phylo-HMM program on your computer, follow these steps:</p>
+                <ol>
+                    <li><b>Download or Clone the <a href="https://github.com/cwmitz/phylo-hmm"
+                                target="_blank">Repository</a>:</b> Download the repository as a ZIP file or clone it
+                        using
+                        <code>git clone https://github.com/cwmitz/phylo-hmm.git</code>.
+                    </li>
+                    <li><b>Set Up the Environment:</b> Install Python and run:
+                        <code>pip install -r requirements.txt</code> to install dependencies.
+                    </li>
+                    <li><b>Run the Program:</b> Execute the program with:
+                        <code>python program.py</code>. The process may take about one minute.
+                    </li>
+                    <li><b>View the Outputs:</b> Check the output files:
+                        <ul>
+                            <li><code>sequences.fasta</code>: Contains aligned DNA sequences.</li>
+                            <li><code>probabilities.png</code>: Displays posterior probabilities of conservation.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <div class="popup-section">
+                <h2>Outputs and Their Significance</h2>
+                <p><b>Aligned Sequences:</b> The <code>sequences.fasta</code> file contains the aligned DNA sequences
+                    generated during the analysis. These sequences highlight conserved regions, which are often
+                    biologically significant.</p>
+                <p><b>Posterior Probabilities Graph:</b> The <code>probabilities.png</code> graph visualizes the
+                    likelihood of DNA conservation across base positions, calculated using a combination of phylogenetic
+                    models and Hidden Markov Models.</p>
+                <p>
+                <p>
+                    <img src="phylo_graph.png" class="phylo-graph">
+                </p>
+                <b>Graph Explanation:</b>
+                <ul>
+                    <li><b>X-Axis:</b> Represents the positions of DNA bases in the sequence.</li>
+                    <li><b>Y-Axis:</b> Posterior probabilities ranging from 0.5 to 1. Values closer to 1 indicate higher
+                        conservation.</li>
+                    <li><b>Peaks:</b> Indicate highly conserved regions, which are more likely to perform critical
+                        biological functions, such as exons.</li>
+                    <li><b>Valleys:</b> Represent less conserved regions, which are often more variable or
+                        non-functional, such as introns.</li>
+                </ul>
+                </p>
+                <p>For example, a peak near a specific base position might indicate a conserved functional element like
+                    a coding region, whereas valleys suggest areas with higher variability, possibly indicating
+                    non-coding or less functional regions.</p>
+            </div>
+
             <div class="popup-section">
                 <h2>Collaboration Details</h2>
                 <p>The Phylogenetic Hidden Markov Model project was a collaborative effort involving a team of three,
