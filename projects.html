@@ -133,17 +133,46 @@
 
         .popup-section p {
             font-size: 1rem;
-            color: white;
+            color: #d3d3d3;
             line-height: 1.5;
             text-align: left;
             margin-bottom: 1.5rem;
         }
 
         .popup-section a {
-            color: white;
+            color: #d3d3d3 !important;
             font-family: 'Open Sans', sans-serif;
             text-decoration: underline;
             font-size: inherit;
+        }
+
+        .popup-section ul {
+            color: #d3d3d3;
+            padding-left: 1.5rem;
+            margin: 0 0 1rem;
+        }
+
+        .popup-section ul li {
+            color: #d3d3d3;
+            line-height: 1.5;
+        }
+
+        .popup-section span {
+            color: #d3d3d3;
+        }
+
+        .popup-section b {
+            color: #d3d3d3;
+        }
+
+        .popup-section ol {
+            color: #d3d3d3;
+            padding-left: 1.5rem;
+        }
+
+        .popup-section ol li {
+            color: #d3d3d3;
+            line-height: 1.5;
         }
 
         body.popup-active {
@@ -259,8 +288,8 @@
             <div class="popup-section">
                 <h2>Explore PlateDate</h2>
                 <a href="http://4300showcase.infosci.cornell.edu:5191/" class="popup-section a" target="_blank">Visit
-                    PlateDate</a> to
-                experience the platform and make meal planning a breeze.
+                    PlateDate</a> <span>to
+                    experience the platform and make meal planning a breeze.</span>
             </div>
             <div class="popup-section">
                 <h2>How It Works and Outputs</h2>
@@ -347,17 +376,18 @@
                 <p>To run the Phylo-HMM program on your computer, follow these steps:</p>
                 <ol>
                     <li><b>Download or Clone the <a href="https://github.com/cwmitz/phylo-hmm"
-                                target="_blank">Repository</a>:</b> Download the repository as a ZIP file or clone it
-                        using
-                        <code>git clone https://github.com/cwmitz/phylo-hmm.git</code>.
+                                target="_blank">Repository</a>:</b> <span>Download the repository as a ZIP file or clone
+                            it
+                            using
+                            <code>git clone https://github.com/cwmitz/phylo-hmm.git</code>.</span>
                     </li>
-                    <li><b>Set Up the Environment:</b> Install Python and run:
-                        <code>pip install -r requirements.txt</code> to install dependencies.
+                    <li><b>Set Up the Environment:</b> <span>Install Python and run:
+                            <code>pip install -r requirements.txt</code> to install dependencies.</span>
                     </li>
-                    <li><b>Run the Program:</b> Execute the program with:
-                        <code>python program.py</code>. The process may take about one minute.
+                    <li><b>Run the Program:</b> <span>Execute the program with:
+                            <code>python program.py</code>. The process may take about one minute.</span>
                     </li>
-                    <li><b>View the Outputs:</b> Check the output files:
+                    <li><b>View the Outputs:</b> <span>Check the output files:</span>
                         <ul>
                             <li><code>sequences.fasta</code>: Contains aligned DNA sequences.</li>
                             <li><code>probabilities.png</code>: Displays posterior probabilities of conservation.</li>
